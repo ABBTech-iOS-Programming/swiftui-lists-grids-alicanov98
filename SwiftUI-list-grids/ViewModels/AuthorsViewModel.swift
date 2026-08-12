@@ -43,11 +43,11 @@ struct AuthorsViewModel {
     ]
     
     let categories: [String] = [
-            "All",
-            "Poets",
-            "Playwrights",
-            "Novelists",
-            "Journalists"
+               "All",
+               "Poets",
+               "Playwrights",
+               "Novelists",
+               "Journalists"
         ]
     
 }

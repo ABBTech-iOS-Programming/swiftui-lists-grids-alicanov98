@@ -21,7 +21,7 @@ struct VendorsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading,spacing: 20) {
-                HeaderView(title:"Vendors",subTitle:"Our Vendors")
+                HeaderView(title:"Vendors",subTitle:"Our Vendors",style: .page)
                 CategoryView(selectedCategory:$selectedCategory,categories:viewModel.categories)
                 LazyVGrid(
                     columns: columns,
