@@ -56,4 +56,12 @@ struct VendorsViewModel {
             rating: 3
         )
     ]
+    
+    let categories: [String] = [
+        "All",
+        "Books",
+        "Poems",
+        "Special for you",
+        "Stationery"
+    ]
 }
