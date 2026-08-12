@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct AuthorsView: View {
+    let viewModel = AuthorsViewModel()
+    @State var selectedCategory = "All"
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+       
+        VStack(alignment: .leading,spacing: 24) {
+            HeaderView(title: "Check the authors", subTitle: "Authors")
+             CategoryView(selectedCategory: $selectedCategory, categories:viewModel.categories )
+            ScrollView {
+            LazyVStack(alignment: .leading, spacing: 20) {
+                ForEach(viewModel.authors) { author in
+                    AuthorRowView(author: author)
+                }
+            }
+            }
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 20)
+        .navigationTitle("Authors")
+        .navigationBarTitleDisplayMode(.inline)
+    
     }
+      
 }
 
 #Preview {
-    AuthorsView()
+    NavigationStack {
+        AuthorsView()
+    }
 }

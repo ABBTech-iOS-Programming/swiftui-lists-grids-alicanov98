@@ -41,4 +41,13 @@ struct AuthorsViewModel {
             imageName: "author_tessGunty"
         )
     ]
+    
+    let categories: [String] = [
+            "All",
+            "Poets",
+            "Playwrights",
+            "Novelists",
+            "Journalists"
+        ]
+    
 }

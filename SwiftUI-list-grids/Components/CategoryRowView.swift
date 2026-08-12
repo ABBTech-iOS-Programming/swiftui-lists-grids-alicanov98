@@ -1,5 +1,5 @@
 //
-//  CategoryTabView.swift
+//  CategoryRowView.swift
 //  SwiftUI-list-grids
 //
 //  Created by Malik Alijanov on 12.08.26.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CategoryTabView: View {
+struct CategoryRowView: View {
     
     let title: String
     @Binding var selectedCategory: String
@@ -33,7 +33,7 @@ struct CategoryTabView: View {
 }
 
 #Preview {
-    CategoryTabView(
+    CategoryRowView(
         title: "All",
         selectedCategory: .constant("All")
     )

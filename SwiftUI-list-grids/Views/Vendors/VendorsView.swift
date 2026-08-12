@@ -21,8 +21,8 @@ struct VendorsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading,spacing: 20) {
-                headerSection
-                categorySection
+                HeaderView(title:"Vendors",subTitle:"Our Vendors")
+                CategoryView(selectedCategory:$selectedCategory,categories:viewModel.categories)
                 LazyVGrid(
                     columns: columns,
                           alignment:.leading,
@@ -40,30 +40,9 @@ struct VendorsView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    private var headerSection: some View {
-        VStack(alignment: .leading,spacing: 5) {
-            Text("Our Vendors")
-                .font(.system(size: 16,weight: .medium))
-                .foregroundStyle(.deepGray)
-            Text("Vendors")
-                .font(.title2)
-                .fontWeight(.bold)
-                .foregroundStyle(.deepPurple)
-        }
-    }
+  
     
-    private var categorySection: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 24) {
-                    ForEach(viewModel.categories, id: \.self) { category in
-                        CategoryTabView(
-                            title: category,
-                            selectedCategory: $selectedCategory
-                        )
-                    }
-                }
-            }
-    }
+
         
 }
 
