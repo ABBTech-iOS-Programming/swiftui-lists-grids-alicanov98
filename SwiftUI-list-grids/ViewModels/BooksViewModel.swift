@@ -52,13 +52,13 @@ struct BooksViewModel {
             imageName: "book_qaraLibasli",
             isFavorite: false
         ),
-        Book(
-            title: "Gecənin Dostu",
-            author: "Unknown",
-            price: 9.99,
-            imageName: "book_gesengDost",
-            isFavorite: false
-        ),
+//        Book(
+//            title: "Gecənin Dostu",
+//            author: "Unknown",
+//            price: 9.99,
+//            imageName: "book_gesengDost",
+//            isFavorite: false
+//        ),
         Book(
             title: "Şantaş",
             author: "Unknown",

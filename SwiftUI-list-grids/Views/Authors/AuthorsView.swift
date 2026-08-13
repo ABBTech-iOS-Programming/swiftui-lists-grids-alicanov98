@@ -8,8 +8,27 @@
 import SwiftUI
 
 struct AuthorsView: View {
+    
     let viewModel = AuthorsViewModel()
-    @State var selectedCategory = "All"
+    
+    @State private var selectedCategory = "All"
+    @State private var searchText = ""
+    @State private var isSearchPresented = false
+    
+    @FocusState private var isSearchFieldFocused: Bool
+    
+    private var filteredAuthors: [Author] {
+        guard !searchText.isEmpty else {
+            return viewModel.authors
+        }
+        
+        return viewModel.authors.filter { author in
+            author.name.localizedStandardContains(searchText) ||
+            author.description.localizedStandardContains(searchText)
+        }
+        
+    }
+    
     var body: some View {
        
         VStack(alignment: .leading,spacing: 24) {
@@ -17,8 +36,8 @@ struct AuthorsView: View {
              CategoryView(selectedCategory: $selectedCategory, categories:viewModel.categories )
             ScrollView {
             LazyVStack(alignment: .leading, spacing: 20) {
-                ForEach(viewModel.authors) { author in
-                    AuthorRowView(author: author)
+                ForEach(filteredAuthors) { author in
+                    AuthorRowView(author: author,style: .horizontal)
                 }
             }
             }
@@ -27,6 +46,23 @@ struct AuthorsView: View {
         .padding(.vertical, 20)
         .navigationTitle("Authors")
         .navigationBarTitleDisplayMode(.inline)
+        .searchable(text: $searchText, isPresented: $isSearchPresented, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search authors")
+        .textInputAutocapitalization(.never)
+        .autocorrectionDisabled()
+        .overlay {
+            if filteredAuthors.isEmpty {
+                ContentUnavailableView.search(text: searchText)
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                 isSearchPresented = true
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                }
+            }
+        }
     
     }
       

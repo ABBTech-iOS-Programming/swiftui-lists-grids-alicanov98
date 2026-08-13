@@ -11,7 +11,9 @@ import SwiftUI
 struct BooksApp: App {
     var body: some Scene {
         WindowGroup {
+            NavigationStack {
             HomeView()
+          }
         }
     }
 }
