@@ -13,6 +13,15 @@ struct VendorsView: View {
     @State private var selectedCategory = "All"
     private let viewModel = VendorsViewModel()
     
+    private var filteredVendors: [Vendor] {
+        guard selectedCategory != "All" else {
+            return viewModel.vendors
+        }
+        
+        return viewModel.vendors.filter { vendor in
+            vendor.category == selectedCategory
+        }
+    }
     
     private let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 10),
@@ -30,7 +39,7 @@ struct VendorsView: View {
                           alignment:.leading,
                           spacing: 16
                 ) {
-                    ForEach(viewModel.vendors) {vendor in
+                    ForEach(filteredVendors) {vendor in
                     VendorCardView(vendor: vendor)
                     }
                 }

@@ -12,4 +12,5 @@ struct Vendor: Identifiable {
     let name: String
     let imageName: String
     let rating: Int
+    let category: String
 }

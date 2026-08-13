@@ -8,10 +8,26 @@
 import SwiftUI
 
 struct BooksView: View {
+    
+    private let viewModel = BooksViewModel()
+    
+    private let columns: [GridItem] = [
+        GridItem(.flexible(), spacing: 16),
+        GridItem(.flexible(), spacing: 16),
+        GridItem(.flexible()),
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            .navigationTitle("Books")
-            .navigationBarTitleDisplayMode(.inline)
+        ScrollView {
+            LazyVGrid(columns:columns) {
+                ForEach(viewModel.books){ book in
+                    BookCardView(book: book)
+                }
+            }
+        }
+        .navigationTitle("Books")
+        .navigationBarTitleDisplayMode(.inline)
+            
     }
 }
 

@@ -41,8 +41,8 @@ struct AuthorsView: View {
     
     var body: some View {
        
-        VStack(alignment: .leading,spacing: 24) {
-            HeaderView(title: "Check the authors", subTitle: "Authors",style: .page)
+        VStack(alignment: .leading,spacing: 40) {
+            HeaderView(title: "Authors", subTitle: "Check the authors",style: .page)
              CategoryView(selectedCategory: $selectedCategory, categories:viewModel.categories )
             ScrollView {
             LazyVStack(alignment: .leading, spacing: 20) {

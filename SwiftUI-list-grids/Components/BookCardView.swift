@@ -23,7 +23,11 @@ struct BookCardView: View {
                 .font(.system(size: 12,weight: .medium))
                 .foregroundStyle(.primary)
                 .lineLimit(1)
-            Text(book.price,format:  .currency(code: "USD"))
+            Text(
+                book.price,
+                format: .currency(code: "AZN")
+            )
+            .environment(\.locale, Locale(identifier: "az_AZ"))
                 .font(.system(size: 11,weight: .semibold))
                 .foregroundStyle(.deepPurple)
         }
