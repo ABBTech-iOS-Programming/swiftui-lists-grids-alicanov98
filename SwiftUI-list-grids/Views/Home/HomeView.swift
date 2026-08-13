@@ -17,6 +17,8 @@ struct HomeView: View {
         ScrollView {
             VStack (alignment: .leading,spacing: 24){
                 booksSection
+                vendorsSection
+                authorsSection
             }
             .padding(.vertical,20)
         }
@@ -31,6 +33,36 @@ struct HomeView: View {
             LazyHStack {
                     ForEach(booksViewModel.books) { book in
                         BookCardView(book: book)
+                    }
+                }
+            }
+        }
+        .padding()
+    }
+    
+    private var vendorsSection: some View{
+        VStack{
+            HeaderView(title: "Best Vendors", style: .section , destination: AnyView(VendorsView()))
+            ScrollView (.horizontal,showsIndicators: false) {
+            LazyHStack (spacing:12){
+                    ForEach(vendorViewModel.vendors) { vendor in
+                        VendorCardView(vendor: vendor, isHiddenCardBottom: true)
+                            .frame(maxWidth: 100)
+                    }
+                }
+            }
+        }
+        .padding()
+    }
+    
+    private var authorsSection: some View{
+        VStack{
+            HeaderView(title: "Authors", style: .section , destination: AnyView(AuthorsView()))
+            ScrollView (.horizontal,showsIndicators: false) {
+            LazyHStack (spacing:12){
+                    ForEach(authorsViewModel.authors) { author in
+                        AuthorRowView(author: author,style: .vertical)
+                            .frame(maxWidth: 100)
                     }
                 }
             }

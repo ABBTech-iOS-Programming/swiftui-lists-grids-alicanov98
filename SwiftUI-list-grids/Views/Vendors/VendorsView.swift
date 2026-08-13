@@ -9,8 +9,10 @@ import SwiftUI
 
 struct VendorsView: View {
     
+
     @State private var selectedCategory = "All"
     private let viewModel = VendorsViewModel()
+    
     
     private let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 10),

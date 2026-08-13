@@ -40,7 +40,7 @@ struct AuthorRowView: View {
     private var verticalView: some View {
         VStack(spacing: 12) {
             authorImage
-                .frame(width: 150, height: 150)
+                .frame(width: 100, height: 100)
             
             authorInformation
                 .multilineTextAlignment(.center)

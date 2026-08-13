@@ -18,11 +18,21 @@ struct AuthorsView: View {
     @FocusState private var isSearchFieldFocused: Bool
     
     private var filteredAuthors: [Author] {
-        guard !searchText.isEmpty else {
-            return viewModel.authors
+        let categoryFilteredAuthors: [Author]
+        
+        if selectedCategory == "All" {
+            categoryFilteredAuthors = viewModel.authors
+        }else {
+            categoryFilteredAuthors = viewModel.authors.filter{author in
+                author.category == selectedCategory
+            }
         }
         
-        return viewModel.authors.filter { author in
+        guard !searchText.isEmpty else {
+            return categoryFilteredAuthors
+        }
+        
+        return categoryFilteredAuthors.filter { author in
             author.name.localizedStandardContains(searchText) ||
             author.description.localizedStandardContains(searchText)
         }

@@ -12,4 +12,5 @@ struct Author: Identifiable {
     let name: String
     let description: String
     let imageName: String
+    let category: String
 }
