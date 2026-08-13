@@ -12,15 +12,11 @@ struct BooksSwiperView: View {
     private let viewModel = BooksViewModel()
     @State private var selectedIndex = 0
     
-    private var specialOfferBooks: [Book] {  viewModel.books.filter {
-        $0.isSpecialOffer
-    }
-   }
     var body: some View {
         VStack(spacing: 12) {
             TabView(selection: $selectedIndex) {
                 ForEach(
-                    Array(specialOfferBooks.enumerated()),
+                    Array(viewModel.specialOfferBooks.enumerated()),
                     id: \.element.id
                 ) { index, book in
                     
