@@ -17,45 +17,44 @@ struct AuthorRowView: View {
         case vertical
     }
     
-    var body: some View {
+    private var layout: AnyLayout {
         switch style {
         case .horizontal:
-            horizontalView
-            
+            AnyLayout(HStackLayout(spacing:12))
         case .vertical:
-            verticalView
+            AnyLayout(VStackLayout(spacing:12))
         }
     }
     
-    private var horizontalView: some View {
-        HStack(spacing: 12) {
+    private var imageSize: CGFloat {
+        style == .horizontal ? 70 : 100
+    }
+    
+    private var informationAlignment: HorizontalAlignment {
+        style == .horizontal ? .leading : .center
+    }
+    
+    var body: some View {
+        layout {
             authorImage
-                .frame(width: 56, height: 56)
             authorInformation
-            
+        }
+        if style == .horizontal {
             Spacer()
         }
     }
     
-    private var verticalView: some View {
-        VStack(spacing: 12) {
-            authorImage
-                .frame(width: 100, height: 100)
-            
-            authorInformation
-                .multilineTextAlignment(.center)
-        }
-    }
     
     private var authorImage: some View {
         Image(author.imageName)
             .resizable()
             .scaledToFill()
+            .frame(width: imageSize,height: imageSize)
             .clipShape(Circle())
     }
     
     private var authorInformation: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: informationAlignment, spacing: 6) {
             Text(author.name)
                 .font(.headline)
                 .foregroundStyle(.primary)
@@ -65,6 +64,7 @@ struct AuthorRowView: View {
                 .foregroundStyle(.secondary)
                 .lineLimit(2)
         }
+        .multilineTextAlignment(style == .horizontal ? .leading : .center)
     }
 }
 

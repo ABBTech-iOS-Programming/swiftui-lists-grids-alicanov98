@@ -45,7 +45,7 @@ struct AuthorsView: View {
             HeaderView(title: "Authors", subTitle: "Check the authors",style: .page)
              CategoryView(selectedCategory: $selectedCategory, categories:viewModel.categories )
             ScrollView {
-            LazyVStack(alignment: .leading, spacing: 20) {
+            LazyVStack(alignment: .leading,spacing: 6) {
                 ForEach(filteredAuthors) { author in
                     AuthorRowView(author: author,style: .horizontal)
                 }
