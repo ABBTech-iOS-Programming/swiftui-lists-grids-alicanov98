@@ -35,13 +35,11 @@ struct SpecialOfferView: View {
                 .padding(.top, 10)
             }
             .padding(.leading, 24)
-            
             Spacer()
-            
             Image(book.imageName)
                 .resizable()
                 .scaledToFill()
-                .frame(width: 95, height: 145)
+                .frame(width: 95)
                 .clipped()
         }
         .frame(maxWidth: .infinity)
@@ -61,6 +59,5 @@ struct SpecialOfferView: View {
         discount: 25,
         isSpecialOffer: true
     ))
-      
 }
 

@@ -11,8 +11,8 @@ struct VendorCardView: View {
     
     
     let vendor: Vendor
+    
     let isHiddenCardBottom: Bool
-      
       init(
           vendor: Vendor,
           isHiddenCardBottom: Bool = false
@@ -41,8 +41,6 @@ var body: some View {
     }
     .frame(maxWidth: .infinity, alignment: .leading)
 }
-
-
 }
 
 #Preview {

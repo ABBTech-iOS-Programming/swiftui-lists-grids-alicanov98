@@ -17,8 +17,8 @@
                 price: 14.99,
                 imageName: "book_annaKarenina",
                 isFavorite: false,
-                discount: 25,
-                isSpecialOffer: true
+                discount: nil,
+                isSpecialOffer: false
             ),
             Book(
                 title: "Balaca Şahzadə",
@@ -35,8 +35,8 @@
                 price: 10.99,
                 imageName: "book_iyirmiBirGun",
                 isFavorite: false,
-                discount: nil,
-                isSpecialOffer: false
+                discount: 25,
+                isSpecialOffer: true
             ),
             Book(
                 title: "On Dördüncü Adam",
