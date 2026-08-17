@@ -12,7 +12,7 @@ struct CategoryRowView: View {
     let title: String
     @Binding var selectedCategory: String
     
-    private var isSelected: Bool {
+    var isSelected: Bool {
         selectedCategory == title
     }
     
