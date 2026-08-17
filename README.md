@@ -30,6 +30,30 @@ implement home screen
 add vendors and authors sections
 ```
 
+## 📱 Part 2 — Navigation & State Management
+
+Mövcud layihəyə Figma dizaynındakı **Book Detail** və **Author Detail** ekranlarını əlavə edin.
+
+### 🛠 Texniki tələblər
+
+- Navigation üçün `NavigationStack`, `NavigationLink(value:)` və `navigationDestination` istifadə edin.
+- Home ekranında kitab seçildikdə uyğun `Book` modelini **Book Detail** ekranına ötürün.
+- Authors ekranında müəllif seçildikdə uyğun `Author` modelini **Author Detail** ekranına ötürün.
+- Author Detail ekranında müəllifin kitablarını `LazyVGrid` və `ForEach` ilə göstərin.
+- Müəllifin kitablarından biri seçildikdə **Book Detail** ekranına keçid edin.
+- Book Detail ekranında favorite vəziyyətini `@State` ilə idarə edin.
+- `+` və `−` düymələri ilə kitab sayını dəyişdirin. Say `0`-dan aşağı düşməməlidir.
+- Ümumi qiyməti kitabın qiymətinə və seçilmiş saya əsasən hesablayın.
+- Sayı idarə edən hissəni ayrıca custom view kimi yaradın və dəyəri `@Binding` vasitəsilə ötürün.
+- `Continue shopping` düyməsinə toxunduqda əvvəlki ekrana geri qayıdın.
+- Dizaynı Figma nümunəsinə mümkün qədər uyğun hazırlayın.
+
+### 🌿 Git tələbləri
+
+- Part 2 üçün ayrıca branch yaradın. Məsələn: `feature/navigation-and-details`.
+- Dəyişiklikləri mərhələli və aydın commit mesajları ilə commit edin.
+- Hazır olduqdan sonra `main` branch-ə Pull Request açın.
+
 ## ✅ Təqdim etməzdən əvvəl
 
 Project-in build olduğuna və xəta olmadan işlədiyinə əmin olun.
