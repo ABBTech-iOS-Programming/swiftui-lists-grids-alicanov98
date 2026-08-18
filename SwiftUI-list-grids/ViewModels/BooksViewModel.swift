@@ -19,7 +19,7 @@ struct BooksViewModel {
             isFavorite: false,
             discount: nil,
             isSpecialOffer: false,
-            vendorImage: "vendor_attpadbooks",
+            vendorImage: "vendor_crane",
             description: "Anna Karenina sevgi, ailə və cəmiyyət arasındakı mürəkkəb münasibətlərdən bəhs edən dünya ədəbiyyatının klassik əsərlərindən biridir."
         ),
         Book(
@@ -74,7 +74,7 @@ struct BooksViewModel {
             isFavorite: false,
             discount: 15,
             isSpecialOffer: true,
-            vendorImage: "vendor_kuromi",
+            vendorImage: "vendor_goodday",
             description: "Keçmişin sirləri və gözlənilməz hadisələrlə qarşılaşan qəhrəmanın həyatını təsvir edən müəmmalı bir hekayədir."
         ),
         Book(
@@ -96,7 +96,7 @@ struct BooksViewModel {
             isFavorite: false,
             discount: nil,
             isSpecialOffer: false,
-            vendorImage: "vendor_peppapig",
+            vendorImage: "vendor_goodday",
             description: "Səfillər ədalət, mərhəmət, yoxsulluq və insanın dəyişmək gücü haqqında yazılmış dünya ədəbiyyatının möhtəşəm klassik əsəridir."
         )
     ]

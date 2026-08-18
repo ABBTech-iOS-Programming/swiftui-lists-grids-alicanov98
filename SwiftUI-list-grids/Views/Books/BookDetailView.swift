@@ -33,6 +33,7 @@ struct BookDetailView: View {
             quantityAndPriceSection
             bottomButtons
         }
+        .padding(.horizontal,16)
         .navigationTitle("Book Detail")
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -55,7 +56,8 @@ struct BookDetailView: View {
             Text(book.title)
             .font(.system(size: 20,weight: .bold))
             Image(book.vendorImage)
-            .scaledToFit()
+            .scaledToFill()
+            .font(.system(size: 30))
             }
             Spacer()
             Button {
