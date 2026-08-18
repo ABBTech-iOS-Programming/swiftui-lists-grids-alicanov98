@@ -13,6 +13,12 @@ struct BooksApp: App {
         WindowGroup {
             NavigationStack {
             HomeView()
+                    .navigationDestination(for: Book.self) { book in
+                        BookDetailView(book:book)
+                    }
+                    .navigationDestination(for: Author.self) { author in
+                        AuthorDetailView(author:author)
+                    }
           }
         }
     }

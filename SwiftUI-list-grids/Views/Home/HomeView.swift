@@ -33,7 +33,10 @@ struct HomeView: View {
             ScrollView (.horizontal,showsIndicators: false) {
             LazyHStack {
                     ForEach(booksViewModel.books) { book in
-                        BookCardView(book: book)
+                        NavigationLink(value: book) {
+                            BookCardView(book: book)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
             }
@@ -62,8 +65,11 @@ struct HomeView: View {
             ScrollView (.horizontal,showsIndicators: false) {
             LazyHStack (spacing:12){
                     ForEach(authorsViewModel.authors) { author in
-                        AuthorRowView(author: author,style: .vertical)
-                            .frame(maxWidth: 100)
+                        NavigationLink (value: author) {
+                            AuthorRowView(author: author,style: .vertical)
+                                .frame(maxWidth: 100)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
             }

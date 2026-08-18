@@ -14,38 +14,43 @@ struct AuthorsViewModel {
             name: "Abraham Verghese",
             description: "Professor and writer",
             imageName: "author_abrahamVerghese",
-            category: "Writer"
-            
+            category: "Writer",
+            books: []
         ),
         Author(
             name: "Adam Dalva",
             description: "Senior fiction editor",
             imageName: "author_adamDalva",
-            category: "Poets"
+            category: "Poets",
+            books: []
         ),
         Author(
             name: "Ann Napolitano",
             description: "Author of Hello Beautiful",
             imageName: "author_annNapolitano",
-            category: "Journalists"
+            category: "Journalists",
+            books: []
         ),
         Author(
             name: "Hernan Diaz",
             description: "Author and novelist",
             imageName: "author_hernanDiaz",
-            category: "Novelists"
+            category: "Novelists",
+            books: []
         ),
         Author(
             name: "John Freeman",
             description: "American writer and editor",
             imageName: "author_johnFreeman",
-            category: "Playwrights"
+            category: "Playwrights",
+            books: []
         ),
         Author(
             name: "Tess Gunty",
             description: "Novelist and writer",
             imageName: "author_tessGunty",
-            category: "Writer"
+            category: "Writer",
+            books: []
         )
     ]
     
