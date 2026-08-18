@@ -29,7 +29,7 @@ struct BookDetailView: View {
             bookImage
             bookInformation
             descriptionSection
-            reviewSection
+            RatingView(rating: 4,showRaiting: true)
             quantityAndPriceSection
             bottomButtons
         }
@@ -39,15 +39,18 @@ struct BookDetailView: View {
     }
     
     private var bookImage:some View {
-        Image(book.imageName)
-            .resizable()
-            .scaledToFit()
-            .frame(maxWidth: .infinity)
-            .frame(height: 313)
-            .clipShape(
-            RoundedRectangle(cornerRadius: 12)
-            )
-            .padding(.bottom, 16)
+        HStack {
+            Spacer()
+            Image(book.imageName)
+                .resizable()
+                .scaledToFit()
+                .frame(height: 313)
+                .clipShape(
+                    RoundedRectangle(cornerRadius: 12)
+                )
+                .padding(.bottom, 16)
+            Spacer()
+        }
     }
     
     private var bookInformation: some View {
@@ -86,26 +89,6 @@ struct BookDetailView: View {
         .lineSpacing(3)
     }
     
-    private var reviewSection: some View {
-        VStack(alignment:.leading,spacing: 8) {
-            Text("Review")
-                .font(.subheadline)
-                .fontWeight(.semibold)
-            HStack(spacing:5){
-                ForEach(0..<4,id: \.self){ _ in
-                    Image(systemName: "star.fill")
-                        .font(.caption)
-                        .foregroundStyle(.yellow)
-                }
-                Image(systemName: "star.fill")
-                    .font(.caption)
-                    .foregroundStyle(.black)
-                Text("(4.0)")
-                    .font(.caption2)
-            }
-        }
-        .padding(.bottom, 18)
-    }
     
     private var quantityAndPriceSection: some View {
         HStack(spacing:12){
@@ -149,7 +132,7 @@ struct BookDetailView: View {
 #Preview {
     NavigationStack {
            BookDetailView(
-               book: BooksViewModel().books[2]
+               book: BooksViewModel().books[4]
            )
        }
 }

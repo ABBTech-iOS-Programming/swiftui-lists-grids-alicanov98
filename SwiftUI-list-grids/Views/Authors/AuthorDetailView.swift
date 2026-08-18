@@ -42,26 +42,12 @@ struct AuthorDetailView: View {
                 .foregroundStyle(.secondary)
             Text(author.name)
                 .font(.system(size: 16,weight: .bold))
-            raitingView
+            RatingView(rating: 4,showRaiting: true)
         }
         .frame(maxWidth: .infinity)
     }
     
-    private var raitingView:some View {
-        HStack (spacing:4) {
-            ForEach(0..<4, id: \.self) { _ in
-                Image(systemName: "star.fill")
-                    .font(.system(size: 16))
-                    .foregroundStyle(.yellow)
-            }
-            Image(systemName: "star.fill")
-                .font(.system(size: 16))
-                .foregroundStyle(.black)
-            Text("(4.0)")
-                .font(.system(size: 16,))
-                .foregroundStyle(.primary)
-        }
-    }
+
     
     private var aboutSection:some View {
         VStack(alignment: .leading,spacing:8) {
@@ -101,12 +87,14 @@ struct AuthorDetailView: View {
             }
         }
         }
+    
     private func authorBookCard(book: Book) -> some View {
         VStack(alignment: .leading, spacing: 6) {
             Image(book.imageName)
                 .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity,minHeight: 50)
+                .scaledToFill()
+                .frame(maxWidth: .infinity)
+                .frame(height: 158)
                 .clipped()
                 .clipShape(
                     RoundedRectangle(cornerRadius: 8)
@@ -120,10 +108,10 @@ struct AuthorDetailView: View {
 
             Text(
                 book.price,
-                format: .currency(code: "USD")
+                format: .currency(code: "AZN")
             )
-            .font(.caption2)
-            .fontWeight(.medium)
+            .environment(\.locale, Locale(identifier: "az_AZ"))
+            .font(.system(size: 14,weight: .semibold))
             .foregroundStyle(.deepPurple)
         }
     }

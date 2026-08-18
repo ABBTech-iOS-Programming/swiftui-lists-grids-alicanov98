@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct RatingView: View {
-    let rating: Int
+    private let rating: Int
+    private let showRaiting: Bool
+    
+    init(rating: Int, showRaiting: Bool = false) {
+        self.rating = rating
+        self.showRaiting = showRaiting
+    }
     
     var body: some View {
         HStack {
@@ -18,10 +24,14 @@ struct RatingView: View {
                     .frame(width: 14, height: 14)
                     .foregroundStyle(star <= rating ? Color.yellow : Color.black)
             }
+            if showRaiting {
+                Text("(\(rating).0)")
+                    .font(.system(size: 16))
+            }
         }
     }
 }
 
 #Preview {
-    RatingView(rating: 4)
+    RatingView(rating: 4,showRaiting: true)
 }
