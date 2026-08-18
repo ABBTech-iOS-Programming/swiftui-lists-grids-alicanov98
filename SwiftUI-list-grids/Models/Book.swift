@@ -16,4 +16,6 @@ struct Book: Identifiable, Hashable {
       var isFavorite: Bool
       let discount: Int?
       let isSpecialOffer: Bool
+      let vendorImage: String
+      let description: String
 }
