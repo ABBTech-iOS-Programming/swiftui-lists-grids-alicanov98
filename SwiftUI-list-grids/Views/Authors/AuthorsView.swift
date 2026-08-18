@@ -47,7 +47,10 @@ struct AuthorsView: View {
             ScrollView {
             LazyVStack(alignment: .leading,spacing: 6) {
                 ForEach(filteredAuthors) { author in
-                    AuthorRowView(author: author,style: .horizontal)
+                    NavigationLink(value:AppRoute.authorDetail(author)) {
+                        AuthorRowView(author: author,style: .horizontal)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
             }

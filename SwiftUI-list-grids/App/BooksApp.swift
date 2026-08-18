@@ -12,14 +12,27 @@ struct BooksApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-            HomeView()
-                    .navigationDestination(for: Book.self) { book in
-                        BookDetailView(book:book)
+                HomeView()
+                    .navigationDestination(for: AppRoute.self) { route in
+                        switch route {
+                        case .bookDetail(let book):
+                            BookDetailView(book: book)
+                       
+                    case .authorDetail(let author):
+                        AuthorDetailView(author: author)
+                        
+                        case .books:
+                            BooksView()
+
+                        case .vendors:
+                            VendorsView()
+
+                        case .authors:
+                            AuthorsView()
+                       
+                        }
                     }
-                    .navigationDestination(for: Author.self) { author in
-                        AuthorDetailView(author:author)
-                    }
-          }
+            }
         }
     }
 }

@@ -21,7 +21,9 @@ struct BooksView: View {
         ScrollView {
             LazyVGrid(columns:columns) {
                 ForEach(viewModel.books){ book in
-                    BookCardView(book: book)
+                    NavigationLink(value: AppRoute.bookDetail(book)){
+                        BookCardView(book: book)
+                    }
                 }
             }
         }

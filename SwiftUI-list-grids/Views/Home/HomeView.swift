@@ -29,11 +29,11 @@ struct HomeView: View {
     
     private var booksSection: some View{
         VStack{
-            HeaderView(title: "Top of Week", style: .section , destination: AnyView(BooksView()))
+            HeaderView(title: "Top of Week", style: .section ,  destination: .books)
             ScrollView (.horizontal,showsIndicators: false) {
             LazyHStack {
                     ForEach(booksViewModel.books) { book in
-                        NavigationLink(value: book) {
+                        NavigationLink(value: AppRoute.bookDetail(book)) {
                             BookCardView(book: book)
                         }
                         .buttonStyle(.plain)
@@ -46,7 +46,7 @@ struct HomeView: View {
     
     private var vendorsSection: some View{
         VStack{
-            HeaderView(title: "Best Vendors", style: .section , destination: AnyView(VendorsView()))
+            HeaderView(title: "Best Vendors", style: .section , destination:.vendors)
             ScrollView (.horizontal,showsIndicators: false) {
             LazyHStack (spacing:12){
                     ForEach(vendorViewModel.vendors) { vendor in
@@ -61,7 +61,7 @@ struct HomeView: View {
     
     private var authorsSection: some View{
         VStack{
-            HeaderView(title: "Authors", style: .section , destination: AnyView(AuthorsView()))
+            HeaderView(title: "Authors", style: .section,destination: .authors)
             ScrollView (.horizontal,showsIndicators: false) {
             LazyHStack (spacing:12){
                     ForEach(authorsViewModel.authors) { author in
