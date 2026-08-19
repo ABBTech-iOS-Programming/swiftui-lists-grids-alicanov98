@@ -7,10 +7,13 @@
 
 import Foundation
 
-struct Author: Identifiable {
+struct Author: Identifiable,Hashable {
     let id = UUID()
     let name: String
     let description: String
     let imageName: String
     let category: String
+    let books: [Book]
 }
+
+

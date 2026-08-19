@@ -9,19 +9,27 @@ import SwiftUI
 
 struct BooksView: View {
     
+    // MARK: - View Model
+
     private let viewModel = BooksViewModel()
     
+    // MARK: - Properties
+
     private let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible()),
     ]
     
+    // MARK: - Body
+
     var body: some View {
         ScrollView {
             LazyVGrid(columns:columns) {
                 ForEach(viewModel.books){ book in
-                    BookCardView(book: book)
+                    NavigationLink(value: AppRoute.bookDetail(book)){
+                        BookCardView(book: book)
+                    }
                 }
             }
         }

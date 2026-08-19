@@ -16,9 +16,9 @@ struct HeaderView: View {
     let title: String
     let subTitle: String?
     let style:Style
-    let destination: AnyView?
+    let destination: AppRoute?
     
-    init(title: String, subTitle: String? = nil, style: Style, destination: AnyView? = nil) {
+    init(title: String, subTitle: String? = nil, style: Style, destination: AppRoute? = nil) {
         self.title = title
         self.subTitle = subTitle
         self.style = style
@@ -57,12 +57,12 @@ struct HeaderView: View {
                 .foregroundStyle(.primary)
             Spacer()
             
-            NavigationLink{
-                destination
-            } label: {
-                Text("See all")
-                    .font(.system(size: 12,weight: .medium))
-                    .foregroundStyle(.deepPurple)
+            if let destination {
+                NavigationLink(value: destination) {
+                    Text("See all")
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundStyle(.deepPurple)
+                }
             }
             
         }
@@ -73,8 +73,7 @@ struct HeaderView: View {
     NavigationStack {
         HeaderView(
             title: "Best Vendors",
-            style: .page, destination: AnyView(VendorsView())
-        )
+            style: .page,  destination: .books)
         .padding()
     }
 }

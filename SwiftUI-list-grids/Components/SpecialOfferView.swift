@@ -57,7 +57,9 @@ struct SpecialOfferView: View {
         imageName: "book_annaKarenina",
         isFavorite: false,
         discount: 25,
-        isSpecialOffer: true
+        isSpecialOffer: true,
+        vendorImage: "vendor_warehouse",
+        description: "Anna Karenina sevgi, ailə və cəmiyyət arasındakı mürəkkəb münasibətlərdən bəhs edən dünya ədəbiyyatının klassik əsərlərindən biridir."
     ))
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Book: Identifiable {
+struct Book: Identifiable, Hashable {
       let id: UUID = UUID()
       let title: String
       let author: String
@@ -16,4 +16,6 @@ struct Book: Identifiable {
       var isFavorite: Bool
       let discount: Int?
       let isSpecialOffer: Bool
+      let vendorImage: String
+      let description: String
 }

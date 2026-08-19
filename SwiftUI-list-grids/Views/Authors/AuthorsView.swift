@@ -9,36 +9,24 @@ import SwiftUI
 
 struct AuthorsView: View {
     
-    let viewModel = AuthorsViewModel()
+    // MARK: - View Models
+
+    private let viewModel = AuthorsViewModel()
     
+    // MARK: - Properties
+
     @State private var selectedCategory = "All"
     @State private var searchText = ""
     @State private var isSearchPresented = false
     
-    @FocusState private var isSearchFieldFocused: Bool
     
     private var filteredAuthors: [Author] {
-        let categoryFilteredAuthors: [Author]
-        
-        if selectedCategory == "All" {
-            categoryFilteredAuthors = viewModel.authors
-        }else {
-            categoryFilteredAuthors = viewModel.authors.filter{author in
-                author.category == selectedCategory
-            }
-        }
-        
-        guard !searchText.isEmpty else {
-            return categoryFilteredAuthors
-        }
-        
-        return categoryFilteredAuthors.filter { author in
-            author.name.localizedStandardContains(searchText) ||
-            author.description.localizedStandardContains(searchText)
-        }
-        
+        viewModel.filteredAuthors(selectedCategory: selectedCategory, searchText: searchText)
     }
     
+    
+    // MARK: - Body
+
     var body: some View {
        
         VStack(alignment: .leading,spacing: 20) {
@@ -47,7 +35,10 @@ struct AuthorsView: View {
             ScrollView {
             LazyVStack(alignment: .leading,spacing: 6) {
                 ForEach(filteredAuthors) { author in
-                    AuthorRowView(author: author,style: .horizontal)
+                    NavigationLink(value:AppRoute.authorDetail(author)) {
+                        AuthorRowView(author: author,style: .horizontal,showDescription: true)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
             }
@@ -76,6 +67,10 @@ struct AuthorsView: View {
     
     }
       
+}
+
+private extension AuthorsView {
+    
 }
 
 #Preview {

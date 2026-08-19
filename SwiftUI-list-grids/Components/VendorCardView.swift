@@ -36,7 +36,7 @@ var body: some View {
                 .font(.system(size: 16,weight: .medium))
                 .foregroundStyle(.primary)
                 .lineLimit(1)
-            RatingView(rating: vendor.rating)
+            RatingView(rating: vendor.rating , showRaiting: false)
         }
     }
     .frame(maxWidth: .infinity, alignment: .leading)
