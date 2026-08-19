@@ -9,20 +9,28 @@ import SwiftUI
 
 struct BookDetailView: View {
     
+    // MARK: - Properties
     let book: Book
+    
     @Environment(\.dismiss) private var dismiss
     
     @State private var quantity = 1
     @State private var isFavorite: Bool
+    
+    // MARK: - Initialization
     
     init(book: Book) {
         self.book = book
         _isFavorite = State(initialValue: book.isFavorite)
     }
     
+    // MARK: - Computed Properties
+    
     private var totalPrice: Double {
         book.price * Double(quantity)
     }
+    
+    // MARK: - Body
     
     var body: some View {
         VStack(alignment:.leading,spacing: 16){
@@ -38,6 +46,9 @@ struct BookDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     
+    // MARK: - UI Components
+    
+
     private var bookImage:some View {
         HStack {
             Spacer()
@@ -52,7 +63,7 @@ struct BookDetailView: View {
             Spacer()
         }
     }
-    
+        
     private var bookInformation: some View {
         HStack (alignment:.center){
             VStack(alignment:.leading){
@@ -127,7 +138,9 @@ struct BookDetailView: View {
         }
         .padding(.vertical,10)
     }
-}
+    }
+
+
 
 #Preview {
     NavigationStack {

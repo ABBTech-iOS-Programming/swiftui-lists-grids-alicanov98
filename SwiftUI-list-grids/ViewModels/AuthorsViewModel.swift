@@ -9,6 +9,8 @@ import Foundation
 
 struct AuthorsViewModel {
     
+    // MARK: - Properties
+    
     let authors: [Author] = [
         Author(
             name: "Abraham Verghese",
@@ -54,13 +56,56 @@ struct AuthorsViewModel {
         )
     ]
     
-    let categories: [String] = [
-               "All",
-               "Poets",
-               "Writer",
-               "Playwrights",
-               "Novelists",
-               "Journalists"
-        ]
+    var categories: [String] {
+        [ "All"]
+        + Array(Set(authors.map(\.category))).sorted()
+    }
     
+    // MARK: - Filtering
+    
+    func filteredAuthors(
+        selectedCategory: String,
+        searchText: String
+    ) -> [Author] {
+        let categoryFilteredAuthors = filterByCategory(selectedCategory)
+        
+        return filterBySearchText(
+        categoryFilteredAuthors,
+        searchText: searchText
+        )
+    }
+    
+}
+
+     // MARK: - Private Filtering Methods
+
+      private extension AuthorsViewModel {
+    
+       func filterByCategory(
+            _ selectedCategory: String
+          ) -> [Author] {
+        guard selectedCategory != "All" else {
+            return authors
+        }
+        return authors.filter { author in
+            author.category == selectedCategory
+        }
+        
+    }
+    
+    func filterBySearchText(
+        _ authors: [Author],
+        searchText: String
+    ) -> [Author] {
+        let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard !trimmedSearchText.isEmpty else {
+            return authors
+        }
+        
+        return authors.filter { author in
+            author.name.localizedStandardContains(trimmedSearchText) ||
+            author.description.localizedStandardContains(trimmedSearchText)
+        }
+    }
 }

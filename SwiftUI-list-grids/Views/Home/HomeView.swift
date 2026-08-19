@@ -8,12 +8,19 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    // MARK: - View Models
+    
     private let booksViewModel = BooksViewModel()
     private let vendorViewModel = VendorsViewModel()
     private let authorsViewModel = AuthorsViewModel()
     
-    @State private var isBookDetailPresented = false
+    // MARK: - Properties
+    
     @State private var selectedBook: Book?
+    
+    
+    // MARK: - Body
     
     var body: some View {
         ScrollView {
@@ -35,7 +42,9 @@ struct HomeView: View {
             
         }
     }
-        
+    
+    // MARK: - UI Components
+
         private var booksSection: some View{
             VStack{
                 HeaderView(title: "Top of Week", style: .section ,  destination: .books)
@@ -77,7 +86,7 @@ struct HomeView: View {
                     LazyHStack (spacing:12){
                         ForEach(authorsViewModel.authors) { author in
                             NavigationLink (value: AppRoute.authorDetail(author)) {
-                                AuthorRowView(author: author,style: .vertical)
+                                AuthorRowView(author: author,style: .vertical,showDescription: true)
                                     .frame(maxWidth: 100)
                             }
                             .buttonStyle(.plain)

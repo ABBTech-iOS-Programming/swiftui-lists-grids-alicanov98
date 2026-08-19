@@ -11,6 +11,17 @@ struct AuthorRowView: View {
     
     let author: Author
     let style: Style
+    let showDescription: Bool
+    
+    init(
+            author: Author,
+            style: Style,
+            showDescription: Bool = false
+        ) {
+            self.author = author
+            self.style = style
+            self.showDescription = showDescription
+        }
     
     enum Style {
         case horizontal
@@ -58,13 +69,15 @@ struct AuthorRowView: View {
             Text(author.name)
                 .font(.headline)
                 .foregroundStyle(.primary)
-            
-            Text(author.description)
-                .font(.caption)
-                .foregroundStyle(.secondary)
-                .lineLimit(2)
-        }
-        .multilineTextAlignment(style == .horizontal ? .leading : .center)
+            if showDescription {
+                Text(author.description)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
+            }
+            }
+                .multilineTextAlignment(style == .horizontal ? .leading : .center)
+       
     }
 }
 

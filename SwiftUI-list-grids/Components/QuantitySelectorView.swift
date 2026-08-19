@@ -9,7 +9,11 @@ import SwiftUI
 
 struct QuantitySelectorView: View {
     
+    // MARK: - Properties
+    
     @Binding var quantity: Int
+    
+    // MARK: - Body
     
     var body: some View {
         HStack(spacing:12) {
@@ -18,6 +22,8 @@ struct QuantitySelectorView: View {
             increaseButton
         }
     }
+    
+    // MARK: - UI Components
     
     private var decreaseButton: some View {
         Button {

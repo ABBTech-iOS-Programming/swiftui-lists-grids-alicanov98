@@ -9,12 +9,16 @@ import SwiftUI
 
 struct AuthorDetailView: View {
     
+    // MARK: - Properties
+    
     let author:Author
     
     private let columns: [GridItem] = [
         GridItem(.flexible(),spacing: 16),
         GridItem(.flexible(),spacing: 16),
     ]
+    
+    // MARK: - Body
     
     var body: some View {
         ScrollView {
@@ -30,18 +34,14 @@ struct AuthorDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     
+    // MARK: - UI Components
+    
     private var authorHeader: some View {
         VStack(spacing:10) {
-            Image(author.imageName)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 88,height: 88)
-                .clipShape(Circle())
+            AuthorRowView(author: author, style: .vertical)
             Text(author.category)
                 .font(.system(size: 16,weight: .semibold))
                 .foregroundStyle(.secondary)
-            Text(author.name)
-                .font(.system(size: 16,weight: .bold))
             RatingView(rating: 4,showRaiting: true)
         }
         .frame(maxWidth: .infinity)
@@ -51,9 +51,7 @@ struct AuthorDetailView: View {
     
     private var aboutSection:some View {
         VStack(alignment: .leading,spacing:8) {
-            Text("About")
-                .font(.system(size: 20,weight: .bold))
-                .foregroundStyle(.black)
+            sectionTitle("About")
             Text(author.description)
                 .font(.system(size: 16,weight: .bold))
                 .foregroundStyle(.secondary)
@@ -63,9 +61,7 @@ struct AuthorDetailView: View {
     
     private var productsScreen: some View {
         VStack (alignment: .leading, spacing: 10) {
-            Text("Products")
-                .font(.system(size: 20, weight: .bold))
-                .foregroundStyle(.black)
+            sectionTitle("Products")
             if author.books.isEmpty {
                 ContentUnavailableView(
                     "No Books",
@@ -86,6 +82,15 @@ struct AuthorDetailView: View {
                 }
             }
         }
+    }
+}
+    // MARK - Reusable Components
+private  extension AuthorDetailView {
+    
+    func sectionTitle(_ title: String) -> some View {
+            Text(title)
+            .font(.system(size: 20, weight: .bold))
+            .foregroundStyle(.primary)
         }
     
     private func authorBookCard(book: Book) -> some View {
@@ -99,13 +104,13 @@ struct AuthorDetailView: View {
                 .clipShape(
                     RoundedRectangle(cornerRadius: 8)
                 )
-
+            
             Text(book.title)
                 .font(.caption)
                 .fontWeight(.medium)
                 .foregroundStyle(.primary)
                 .lineLimit(1)
-
+            
             Text(
                 book.price,
                 format: .currency(code: "AZN")
@@ -115,7 +120,7 @@ struct AuthorDetailView: View {
             .foregroundStyle(.deepPurple)
         }
     }
-    }
+}
 
 
 #Preview {

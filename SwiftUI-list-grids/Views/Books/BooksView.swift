@@ -9,14 +9,20 @@ import SwiftUI
 
 struct BooksView: View {
     
+    // MARK: - View Model
+
     private let viewModel = BooksViewModel()
     
+    // MARK: - Properties
+
     private let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible()),
     ]
     
+    // MARK: - Body
+
     var body: some View {
         ScrollView {
             LazyVGrid(columns:columns) {

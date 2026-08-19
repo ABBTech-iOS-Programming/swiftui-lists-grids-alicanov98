@@ -67,11 +67,7 @@ struct VendorsViewModel {
         )
     ]
     
-    let categories: [String] = [
-        "All",
-        "Books",
-        "Poems",
-        "Special for you",
-        "Stationery"
-    ]
+    var categories: [String] {
+        [ "All" ] + Array(Set(vendors.map(\.category))).sorted()
+    }
 }
